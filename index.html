@@ -41,6 +41,49 @@
   .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.8);backdrop-filter:blur(8px);z-index:200;display:flex;align-items:center;justify-content:center;padding:1.5rem;}
   .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease;}
   .reveal.visible{opacity:1;transform:translateY(0);}
+  /* ── MOBILE RESPONSIVE ── */
+  @media(max-width:768px){
+    #home>div{grid-template-columns:1fr!important;gap:1.5rem!important;text-align:center;}
+    #home>div>div:first-child{order:2;}
+    #home>div>div:last-child{order:1;}
+    #home>div>div:first-child p{max-width:100%!important;}
+    #home>div>div:first-child>div:first-child{justify-content:center;}
+    #home>div>div:first-child>div[style*="flex-wrap"]{justify-content:center;}
+    .float{width:180px!important;height:180px!important;}
+    #about>div>div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;gap:1.5rem!important;}
+    #about>div>div>div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr 1fr!important;}
+    #skills>div>div[style*="grid-template-columns"]{grid-template-columns:1fr!important;}
+    #projects>div>div[style*="grid-template-columns"]{grid-template-columns:1fr!important;}
+    #contact>div>div[style*="grid-template-columns"]{grid-template-columns:1fr!important;gap:1.5rem!important;}
+    footer>div>div{flex-direction:column!important;text-align:center;align-items:center!important;}
+    section{padding:3.5rem 0!important;}
+  }
+  @media(max-width:480px){
+    .float{width:150px!important;height:150px!important;}
+    #about>div>div>div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
+  }
+  .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;width:100%;}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;}
+  .traits-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;max-width:900px;margin:0 auto;}
+  .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+  @media(max-width:768px){
+    .hero-grid{grid-template-columns:1fr!important;gap:2rem!important;text-align:center;}
+    .hero-photo{order:-1;}
+    .hero-btns{justify-content:center!important;}
+    .hero-badge{display:inline-flex!important;}
+    .float{width:180px!important;height:180px!important;}
+    .about-grid{grid-template-columns:1fr!important;}
+    .traits-grid{grid-template-columns:1fr 1fr!important;}
+    .contact-grid{grid-template-columns:1fr!important;gap:1.5rem!important;}
+    .stats-grid{grid-template-columns:1fr!important;gap:1rem!important;}
+    section{padding:3rem 0!important;}
+    footer .footer-inner{flex-direction:column!important;text-align:center!important;align-items:center!important;gap:1rem!important;}
+  }
+  @media(max-width:480px){
+    .float{width:150px!important;height:150px!important;}
+    .traits-grid{grid-template-columns:1fr!important;}
+  }
 </style>
 <script>
 tailwind.config={theme:{extend:{colors:{slate:{950:'#020817'}}}}}
@@ -97,7 +140,7 @@ tailwind.config={theme:{extend:{colors:{slate:{950:'#020817'}}}}}
 
 <!-- ═══ HERO ═══ -->
 <section id="home" style="min-height:100vh;display:flex;align-items:center;padding:80px 0 40px;position:relative;overflow:hidden;">
-  <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;width:100%;">
+  <div class="hero-grid" style="max-width:1200px;margin:0 auto;padding:0 1.5rem;">
 
     <!-- Left -->
     <div class="reveal">
@@ -114,7 +157,7 @@ tailwind.config={theme:{extend:{colors:{slate:{950:'#020817'}}}}}
       <p style="color:#64748b;font-size:1.05rem;line-height:1.7;margin-bottom:2.5rem;max-width:480px;">
         Passionate about data analytics, problem solving, and building interactive applications using Python and modern technologies.
       </p>
-      <div style="display:flex;flex-wrap:wrap;gap:1rem;">
+      <div class="hero-btns" style="display:flex;flex-wrap:wrap;gap:1rem;">
         <button class="glow-btn" onclick="goTo('projects')" style="padding:14px 28px;border-radius:12px;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;font-weight:600;border:none;cursor:pointer;font-size:.95rem;display:flex;align-items:center;gap:8px;transition:all .3s;">
           💼 View Projects
         </button>
@@ -125,7 +168,7 @@ tailwind.config={theme:{extend:{colors:{slate:{950:'#020817'}}}}}
     </div>
 
     <!-- Right — Profile Photo -->
-    <div style="display:flex;justify-content:center;" class="reveal">
+    <div class="reveal hero-photo" style="display:flex;justify-content:center;">
       <div class="float" style="position:relative;width:280px;height:280px;">
         <!-- Spinning gradient border -->
         <div class="spin" style="position:absolute;inset:-8px;border-radius:50%;background:conic-gradient(from 0deg,#6366f1,#8b5cf6,#a855f7,#6366f1);padding:3px;border-radius:50%;">
@@ -160,7 +203,7 @@ tailwind.config={theme:{extend:{colors:{slate:{950:'#020817'}}}}}
       <h2 style="font-size:clamp(2rem,4vw,3rem);font-weight:900;color:#fff;margin-bottom:1rem;">About Me</h2>
       <p style="color:#64748b;max-width:500px;margin:0 auto;font-size:1.05rem;">A passionate data enthusiast on a mission to extract meaningful insights from complex data.</p>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;">
+    <div class="about-grid">
       <div class="reveal glass card-hover" style="border-radius:16px;padding:2rem;">
         <div style="color:#94a3b8;line-height:1.8;font-size:.95rem;">
           <p style="margin-bottom:1rem;">Hi there! I'm <span style="color:#818cf8;font-weight:600;">Muhammad Ahmad</span>, a passionate Python developer and data analytics enthusiast dedicated to turning data into compelling stories.</p>
@@ -169,7 +212,7 @@ tailwind.config={theme:{extend:{colors:{slate:{950:'#020817'}}}}}
           <p style="color:#a78bfa;font-weight:500;">Currently seeking opportunities in data analytics and Python development where I can contribute, grow, and make an impact.</p>
         </div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+      <div class="traits-grid">
         <div class="reveal glass card-hover" style="border-radius:16px;padding:1.5rem;">
           <div style="width:40px;height:40px;border-radius:10px;background:rgba(99,102,241,0.2);border:1px solid rgba(99,102,241,0.3);display:flex;align-items:center;justify-content:center;margin-bottom:.75rem;font-size:1.2rem;">🐍</div>
           <h3 style="color:#fff;font-weight:700;margin-bottom:.5rem;font-size:.9rem;">Python Enthusiast</h3>
@@ -388,7 +431,7 @@ tailwind.config={theme:{extend:{colors:{slate:{950:'#020817'}}}}}
 <!-- ═══ STATS ═══ -->
 <section style="padding:4rem 0;">
   <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;">
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;">
+    <div class="stats-grid">
       <div class="reveal glass card-hover" style="border-radius:16px;padding:2rem;text-align:center;">
         <div style="font-size:2rem;margin-bottom:.75rem;">💼</div>
         <div style="font-size:2.5rem;font-weight:900;color:#fff;" data-count="5" data-suffix="+">0+</div>
@@ -416,7 +459,7 @@ tailwind.config={theme:{extend:{colors:{slate:{950:'#020817'}}}}}
       <h2 style="font-size:clamp(2rem,4vw,3rem);font-weight:900;color:#fff;margin-bottom:1rem;">Let's Connect</h2>
       <p style="color:#64748b;max-width:500px;margin:0 auto;font-size:1.05rem;">Have a project in mind or want to collaborate? I'd love to hear from you.</p>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;max-width:900px;margin:0 auto;">
+    <div class="contact-grid">
       <div class="reveal" style="display:flex;flex-direction:column;gap:1rem;">
         <div class="glass card-hover" style="border-radius:14px;padding:1.25rem;display:flex;align-items:center;gap:1rem;">
           <div style="width:44px;height:44px;border-radius:10px;background:rgba(99,102,241,0.2);border:1px solid rgba(99,102,241,0.3);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">✉️</div>
@@ -464,7 +507,7 @@ tailwind.config={theme:{extend:{colors:{slate:{950:'#020817'}}}}}
 
 <!-- ═══ FOOTER ═══ -->
 <footer style="border-top:1px solid rgba(255,255,255,0.05);padding:2.5rem 0;">
-  <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.5rem;">
+  <div class="footer-inner" style="max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.5rem;">
     <div>
       <div style="font-size:1.1rem;font-weight:900;color:#fff;"><span style="background:linear-gradient(135deg,#818cf8,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">MA</span>.dev</div>
       <div style="color:#475569;font-size:.8rem;margin-top:2px;">Data Analyst · Python Developer</div>
